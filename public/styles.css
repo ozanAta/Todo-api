@@ -1,0 +1,78 @@
+body {
+    background-image: url("http://tagryn.elementfx.com/imagesound/legalpad.gif");
+    background-size: cover;
+ }
+
+h1 ,h2{
+	border: 2px solid black;
+	left: 0;
+	background-color: #EEE;
+	width: 350px;
+	height:auto;
+	margin: .5em;
+	padding: .3em 0;
+	border-radius: 4px;	
+}
+
+.selected {
+	background-color: #CFD8DC !important;
+	color: white;
+}
+.tasks {
+	margin: 0 0 2em 0;
+	list-style-type: none;
+	padding: 0;
+	width: 15em;
+}
+.tasks li {
+	cursor: pointer;
+	position: relative;
+	left: 0;
+	background-color: #EEE;
+	margin: .5em;
+	padding: .3em 0;
+	height: 1.6em;
+	border-radius: 4px;
+}
+.tasks li.selected:hover {
+	width:200px;
+	background-color: #BBD8DC !important;
+	color: white;
+}
+.tasks li:hover {
+	color: #607D8B;
+	background-color: gray;
+	left: .1em;
+}
+.tasks .text {
+	position: relative;
+	top: -3px;
+}
+.tasks .badge {
+	display: inline-block;
+	font-size: small;
+	color: white;
+	padding: 0.8em 0.7em 0 0.7em;
+	background-color : #607D8B;
+	line-height: 1em;
+	position: relative;
+	left: -1px;
+	top: -4px;
+	height: 1.8em;
+	margin-right: .8em;
+	border-radius: 4px 0 0 4px;
+}
+.result {
+	opacity:1 ;
+	border: 2px solid black;
+	height: auto;
+	width: auto;
+	position: absolute;
+	right: 1100;
+	top: 150;
+	border-radius:30px 10px 10px;
+	background-color: #EEE;
+	margin: 1.5em;
+	padding: 1.3em 0;
+}
+
