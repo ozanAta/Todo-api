@@ -9,4 +9,7 @@ export class TaskService {
 	getTasks() {
 		return Promise.resolve(Tasks);
 	}
+	getTask(id: number) {
+		return this.getTasks().then(tasks => tasks.filter(task => task.id === id)[0]);
+	}
 }

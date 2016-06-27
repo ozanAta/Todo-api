@@ -1,9 +1,0 @@
-node_modules/
-data/*.sqlite
-playground/
-public/node_modules/
-public/*.js
-public/*.js.map
-public/app/*.js
-public/app/*.js.map
-sqlitebrowser.app

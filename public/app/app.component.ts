@@ -1,19 +1,20 @@
 import {Component, OnInit} from '@angular/core'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
+import { TaskComponent } from './task.component';
+import { DashboardComponent} from './dashboard.component';
 import { TaskDetailComponent } from './task-detail.component';
 import { TaskService } from './task.service';
 
 @Component({
-	selector: 'my-task',
+	selector: 'my-app',
 	template: `
-		<h1>Online To Do List App!</h1>
-		<h2>Task List</h2>
+		<h1>Internship Project</h1>
 		<a [routerLink]="['Dashboard']">Dashboard</a>
-		<a [routerLink]="['Tasks']">Tasks</a>
- 		<router-outlet></router-outlet>
+		<a [routerLink]="['Tasks']">List</a>
+  		<router-outlet></router-outlet>
 	`,
-	directives: [TaskDetailComponent],
+	directives: [ROUTER_DIRECTIVES],
 	providers: [
 		ROUTER_PROVIDERS,
 		TaskService
@@ -22,15 +23,19 @@ import { TaskService } from './task.service';
 
 @RouteConfig([
 	{
-		path: '/tasks',
-		name: 'Tasks',
-		component: TaskComponent
-	},{
 		path: '/dashboard',
 		name: 'Dashboard',
 		component: DashboardComponent,
 		useAsDefault: true
-	}
+	},{
+		path: '/tasks',
+		name: 'Tasks',
+		component: TaskComponent
+	},{
+		path: '/detail/:id',
+		name: 'TaskDetail',
+		component: TaskDetailComponent
+	},
 ])
 
 export class AppComponent{

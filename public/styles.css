@@ -3,7 +3,7 @@ body {
     background-size: cover;
  }
 
-h1 ,h2{
+h1, h2{
 	border: 2px solid black;
 	left: 0;
 	background-color: #EEE;
@@ -66,13 +66,28 @@ h1 ,h2{
 	opacity:1 ;
 	border: 2px solid black;
 	height: auto;
-	width: auto;
-	position: absolute;
-	right: 1100;
-	top: 150;
-	border-radius:30px 10px 10px;
+	width: 500px;
+	position: center absolute;
+	border-radius:50px 10px 50px;
 	background-color: #EEE;
 	margin: 1.5em;
 	padding: 1.3em 0;
+	text-align: center;
 }
 
+.squares {
+	opacity:1 ;
+	background-color: #EEE;
+	border: 2px solid black;
+}
+
+.module.task{
+	height:150;
+	width:150;
+	text-align: center;
+	opacity:1 ;
+	background-color: #EEE;
+	float: left;
+	margin:5px;
+	border: 2px solid black;
+}

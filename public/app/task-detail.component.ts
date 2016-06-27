@@ -1,5 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouteParams } from '@angular/router-deprecated';
+
 import { Task } from './task';
+import { TaskService } from './task.service';
 
 /*
 	"app.components" is our main component file, so we need to keep it as readable as possible. 
@@ -11,22 +14,25 @@ import { Task } from './task';
 
 @Component({
   selector: 'task-detail',
-  template:`
- 	<div *ngIf="task" class = "result">
-		<h3>Task {{task.id}} Details</h3>
-		<div>
-			<label>description</label>
-			<span>{{task.description}}</span>
-		</div>
-		<div>
-			<label>completed: </label>
-			<span>{{task.completed}}</span>
-		</div>
-    </div>
-  `
+  templateUrl: 'app/task-detail.component.html'
 })
 
-export class TaskDetailComponent {
-	@Input() 
-	task: Task;	 
+export class TaskDetailComponent implements OnInit {
+	task: Task;
+
+	constructor(
+ 		private taskService: TaskService,
+		private routeParams: RouteParams
+	){}
+
+	ngOnInit() {
+		let id = +this.routeParams.get('id');
+		this.taskService.getTask(id).then(task => this.task = task);
+	}
+	/*
+		Allows user to navigate backwards one step in the browsers history stack.
+	*/
+	goBack() {
+  		window.history.back();
+	}
 }
