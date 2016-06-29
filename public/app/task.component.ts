@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router-deprecated';
+import { Http } from '@angular/http';
+import 'rxjs/Rx';
 
 import { TaskDetailComponent } from './task-detail.component';
-import { TaskService } from './task.service';
 import { Task } from './task';
 
 @Component({
@@ -16,10 +17,15 @@ export class TaskComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private taskService: TaskService){}
+		private http: Http
+		){}
 
 	getTasks(){
-    	this.taskService.getTasks().then(tasks => this.tasks = tasks);
+    	this.http.get('http://localhost:3000/todos').map((res:Response) => {return res.json();}).subscribe((response) => {
+			this.tasks = response;
+			return response;
+		});
+    	
 	}
 
 	ngOnInit() {

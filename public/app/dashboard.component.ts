@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
+import { Http } from '@angular/http';
+import 'rxjs/Rx';
 
-import { Task } from './task';
-import { TaskService } from './task.service';
 import { TaskDetailComponent } from './task-detail.component';
+import { Task } from './task';
 
 @Component({
 	selector: 'my-dashboard',
@@ -15,11 +16,14 @@ export class DashboardComponent implements OnInit {
 	
 	constructor(
 		private router: Router,
-		private taskService: TaskService
+		private http: Http
 	){}
 	
 	ngOnInit() {
-		this.taskService.getTasks().then(tasks => this.tasks = tasks.slice(1, 5));
+    	this.http.get('http://localhost:3000/todos').map((res:Response) => {return res.json();}).subscribe((response) => {
+			this.tasks = response.slice(0, 4);
+			return response;
+		});
 	}
 	
 	onSelect(task: Task) { this.selectedTask = task; }

@@ -4,7 +4,6 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 import { TaskComponent } from './task.component';
 import { DashboardComponent} from './dashboard.component';
 import { TaskDetailComponent } from './task-detail.component';
-import { TaskService } from './task.service';
 
 @Component({
 	selector: 'my-app',
@@ -17,7 +16,6 @@ import { TaskService } from './task.service';
 	directives: [ROUTER_DIRECTIVES],
 	providers: [
 		ROUTER_PROVIDERS,
-		TaskService
 	]
 })
 
@@ -39,6 +37,4 @@ import { TaskService } from './task.service';
 ])
 
 export class AppComponent{
-
-
 }

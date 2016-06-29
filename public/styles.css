@@ -71,7 +71,6 @@ h1, h2{
 	border-radius:50px 10px 50px;
 	background-color: #EEE;
 	margin: 1.5em;
-	padding: 1.3em 0;
 	text-align: center;
 }
 
@@ -90,4 +89,14 @@ h1, h2{
 	float: left;
 	margin:5px;
 	border: 2px solid black;
+}
+
+.controlPanel{
+	color: #607D8B;
+	background-color: gray;
+	position: inherit;
+	float:right;
+	width:60%;
+	border-radius:60px;
+
 }

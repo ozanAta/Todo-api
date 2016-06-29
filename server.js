@@ -12,7 +12,6 @@ app.use(express.static('public'));
 app.use('/todos', routeTodos);
 app.use('/todos', routeTodosID);
 
-
 /*
 	What we are building here is a simple web service. For example if user sends a GET
 	request to path '/' web service is going to send user the message 'Todo API Root'

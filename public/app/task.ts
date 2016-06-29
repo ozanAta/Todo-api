@@ -4,7 +4,7 @@
 	we export the class "Task" so we can use it from other files.
 */
 export class Task{
-	id: number;
 	description: string;
 	completed: boolean;
+	id: number;
 }
