@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
 import { Http } from '@angular/http';
-import 'rxjs/Rx';
 
-import { TaskDetailComponent } from './task-detail.component';
+
+/*	Local Libraries	*/
 import { Task } from './task';
+import { TaskDetailComponent } from './task-detail.component';
+import { CreateTaskComponent } from './create-task.component';
 
 @Component({
 	selector: 'my-dashboard',
-	templateUrl:'app/dashboard.component.html'
+	templateUrl:'app/dashboard.component.html',
+	directives: [CreateTaskComponent]
 })
+
 export class DashboardComponent implements OnInit {
 	tasks: Task[] = [];
 	selectedTask: Task;
-	
+	panelOppacity = true;
 	constructor(
 		private router: Router,
 		private http: Http
@@ -27,6 +31,10 @@ export class DashboardComponent implements OnInit {
 	}
 	
 	onSelect(task: Task) { this.selectedTask = task; }
+
+	makeVisible(){
+		this.panelOppacity = !this.panelOppacity;
+	}
 
 	gotoDetail() {
 		this.router.navigate(['TaskDetail', { id: this.selectedTask.id }]);

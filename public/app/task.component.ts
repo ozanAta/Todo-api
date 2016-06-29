@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router-deprecated';
 import { Http } from '@angular/http';
-import 'rxjs/Rx';
 
+
+/*	Local Libraries	*/
 import { TaskDetailComponent } from './task-detail.component';
+import { CreateTaskComponent } from './create-task.component';
 import { Task } from './task';
 
 @Component({
 	selector: 'my-task',
-	templateUrl: 'app/task.component.html'
+	templateUrl: 'app/task.component.html',
+	directives: [CreateTaskComponent]
 })
 
 export class TaskComponent implements OnInit {
 	tasks :Task[];
 	selectedTask: Task;
+	panelOpacity =  true;
 
 	constructor(
 		private router: Router,
@@ -30,6 +34,10 @@ export class TaskComponent implements OnInit {
 
 	ngOnInit() {
 	    this.getTasks();
+	}
+
+	makeVisible(){
+		this.panelOpacity = !this.panelOpacity;
 	}
 
 	onSelect(task: Task) { this.selectedTask = task; }

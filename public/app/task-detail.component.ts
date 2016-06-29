@@ -1,18 +1,20 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import 'rxjs/Rx';
+
+
+/* Local Libraries */
 import { Task } from './task';
 
 /*
-	"app.components" is our main component file, so we need to keep it as readable as possible. 
-	This is the reason why we have "task-detail.component" file. Instead of adding template of
-	"task-detail.component" directly into "app.component"s template section. We create a new 
-	component like "<task-detail [task]="selectedTask"></task-detail>" and add it instead. This
+	'app.components' is our main component file, so we need to keep it as readable as possible. 
+	This is the reason why we have 'task-detail.component' file. Instead of adding template of
+	'task-detail.component' directly into 'app.component's template section. We create a new 
+	component like '<task-detail [task]='selectedTask'></task-detail>' and add it instead. This
 	way our code is easier to read and modify.
 */
 @Component({
@@ -48,12 +50,6 @@ export class TaskDetailComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
-		// if (this.routeParams.get('id') !== null) {
-		// 	let id = +this.routeParams.get('id');
-		// 	this.navigated = true;
-		// 	this.getTask(id).then(task => this.task = task);
-		// }
     	this.http.get('http://localhost:3000/todos').map((res:Response) => {return res.json();}).subscribe((response) => {
     		let id = +this.routeParams.get('id');
 			this.task = response.filter(task => task.id === id)[0];
@@ -61,9 +57,15 @@ export class TaskDetailComponent implements OnInit {
 		});
 
 	}
-	/*
-		Allows user to navigate backwards one step in the browsers history stack.
-	*/
+
+/*	Allows user to navigate backwards one step in the browsers history stack.	*/
+	delete() {
+		var id = this.task.id;
+		this.http.delete('http://localhost:3000/todos/' + encodeURIComponent(id)).map((res:Response) => res).subscribe((response) => {
+		});
+		this.goBack();
+	}
+
 	goBack() {
   		window.history.back();
 	}

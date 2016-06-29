@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
+/*	Local Libraries	*/
 import { TaskComponent } from './task.component';
 import { DashboardComponent} from './dashboard.component';
 import { TaskDetailComponent } from './task-detail.component';
 
 @Component({
-	selector: 'my-app',
+	selector: 'todoApi',
 	template: `
 		<h1>Internship Project</h1>
 		<a [routerLink]="['Dashboard']">Dashboard</a>

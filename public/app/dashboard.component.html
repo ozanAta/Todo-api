@@ -1,10 +1,14 @@
 <h2>My Dashboard</h2>
-<div class="grid grid-pad">
-	<div *ngFor="let task of tasks" >
-		<div class="module task">
+<div [hidden]='panelOppacity' class='addPanel'>
+	<add-task></add-task>
+</div>
+<div class='grid grid-pad'>
+	<button  (click)='makeVisible()'> Add a new Task</button>
+	<div *ngFor='let task of tasks' >
+		<div class='module task'>
       		<h3>Task</h3>
       		<h4>{{task.id}}</h4>
-      		<button [class.selected]='task === selectedTask' (click)="gotoDetail(onSelect(task))">View Details</button>
+      		<button [class.selected]='task === selectedTask' (click)='gotoDetail(onSelect(task))'>View Details</button>
     	</div>
   	</div>
 </div>

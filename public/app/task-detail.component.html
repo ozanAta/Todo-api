@@ -1,6 +1,10 @@
+<div [hidden]='panelOppacity' class='addPanel'>
+	<add-task></add-task>
+</div>
 <div *ngIf="task" class = "result">
 	<div class="controlPanel">
-		foo
+		<button (click)="edit()">Edit</button>
+		<button (click)="delete()">Delete</button>	
 	</div>
 	<h3>Task {{task.id}} Details</h3>
 	<div>
