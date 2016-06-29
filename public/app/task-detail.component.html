@@ -1,0 +1,15 @@
+<div *ngIf="task" class = "result">
+	<div class="controlPanel">
+		foo
+	</div>
+	<h3>Task {{task.id}} Details</h3>
+	<div>
+		<label>description: </label>
+		<span>{{task.description}}</span>
+	</div>
+	<div>
+		<label>completed: </label>
+		<span>{{task.completed}}</span>
+	</div>
+	<button (click)="goBack()">Back</button>
+</div>
