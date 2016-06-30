@@ -52,7 +52,7 @@ export class TaskDetailComponent implements OnInit {
 
 	delete() {
 		var id = this.task.id;
-		this.http.delete('http://localhost:3000/todos/' + encodeURIComponent(id)).map((res:Response) => res).subscribe((response) => {
+		this.http.delete('http://localhost:3000/todos/' + id).map((res:Response) => res).subscribe((response) => {
 		});
 		this.goBack();
 	}

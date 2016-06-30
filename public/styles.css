@@ -19,6 +19,8 @@ h1, h2{
 	color: white;
 }
 .tasks {
+	position:relative;
+	top:210px;
 	margin: 0 0 2em 0;
 	list-style-type: none;
 	padding: 0;
@@ -100,21 +102,27 @@ h1, h2{
 	text-align:right;
 }
 
+.dashboard{
+	position:relative;
+	top:210px;
+	width:auto;
+	height:150px;
+}
+
 .addPanel {
 	position: absolute;
-	top: 25%;
-	left: 75%;
+	border: 2px solid black;
 	background-color: #EEE;
 	border-radius: 16px;
-	width:auto;
+	width:500px;
 	height:auto;
 }
 
 .taskInfoPanel{
-	position:inherit;
-	top: 50%;
+	position:center;
 	background-color: white;
 	border-radius: 16px;
+	width: auto;
 	padding:10px;
-	margin:10px;
+	margin:20px;
 }

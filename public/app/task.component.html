@@ -1,9 +1,7 @@
 <h2>My Task List</h2>
-<div [hidden]='panelOpacity' class='addPanel'>
-	<add-task></add-task>
-</div>
+<add-task></add-task>
 <ul class='tasks'>
-	<button  (click)='makeVisible()'> Add a new Task</button>
+	<button  (click)='changeVisibility()'> Add a new Task</button>
 	<li *ngFor='let task of tasks' [class.selected]='task === selectedTask' (click)='onSelect(task)'>
 		<span class='badge'>{{task.id}}</span> Task
 	</li>

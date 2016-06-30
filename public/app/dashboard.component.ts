@@ -8,8 +8,9 @@ import 'rxjs/add/operator/map';
 import { Task } from './task';
 import { TaskDetailComponent } from './task-detail.component';
 import { CreateTaskComponent } from './create-task.component';
-
+import { ChangeVisibilityService } from './common-service.component';
 @Component({
+	providers:[ChangeVisibilityService],
 	selector: 'my-dashboard',
 	templateUrl:'app/dashboard.component.html',
 	directives: [CreateTaskComponent]
@@ -18,10 +19,10 @@ import { CreateTaskComponent } from './create-task.component';
 export class DashboardComponent implements OnInit {
 	tasks: Task[] = [];
 	selectedTask: Task;
-	panelOppacity = true;
 	constructor(
 		private router: Router,
-		private http: Http
+		private http: Http,
+		private CommonService:ChangeVisibilityService
 	){}
 	
 	ngOnInit() {
@@ -33,8 +34,8 @@ export class DashboardComponent implements OnInit {
 	
 	onSelect(task: Task) { this.selectedTask = task; }
 
-	makeVisible(){
-		this.panelOppacity = !this.panelOppacity;
+	changeVisibility(){
+		this.CommonService.apperancy.next(false);
 	}
 
 	gotoDetail() {
