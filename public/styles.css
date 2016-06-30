@@ -67,7 +67,6 @@ h1, h2{
 	border: 2px solid black;
 	height: auto;
 	width: 500px;
-	position: center absolute;
 	border-radius:50px 10px 50px;
 	background-color: #EEE;
 	margin: 1.5em;
@@ -80,7 +79,7 @@ h1, h2{
 	border: 2px solid black;
 }
 
-.module.task{
+.module.task {
 	height:150;
 	width:150;
 	text-align: center;
@@ -91,12 +90,31 @@ h1, h2{
 	border: 2px solid black;
 }
 
-.controlPanel{
+.controlPanel {
 	color: #607D8B;
 	background-color: gray;
 	position: inherit;
 	float:right;
 	width:60%;
 	border-radius:60px;
+	text-align:right;
+}
 
+.addPanel {
+	position: absolute;
+	top: 25%;
+	left: 75%;
+	background-color: #EEE;
+	border-radius: 16px;
+	width:auto;
+	height:auto;
+}
+
+.taskInfoPanel{
+	position:inherit;
+	top: 50%;
+	background-color: white;
+	border-radius: 16px;
+	padding:10px;
+	margin:10px;
 }

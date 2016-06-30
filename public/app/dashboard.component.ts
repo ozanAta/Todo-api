@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
-import { Http } from '@angular/http';
-
+import { Http , Response } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 /*	Local Libraries	*/
 import { Task } from './task';

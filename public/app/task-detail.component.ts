@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-
 
 /* Local Libraries */
 import { Task } from './task';
@@ -32,16 +31,18 @@ export class TaskDetailComponent implements OnInit {
 		private http: Http
 	){}
 
-	private handleError(error: any) {
-		console.error('An error occurred', error);
-		return Promise.reject(error.message || error);
+	ngOnInit() {
+		this.http.get('http://localhost:3000/todos').map((res:Response) => {return res.json();}).subscribe((response) => {
+			let id = +this.routeParams.get('id');
+			this.task = response.filter(task => task.id === id)[0];
+			return this.task;
+		});
 	}
 
-	getTasks(): Promise<Task[]> {
+	getTasks() {
 	return this.http.get('http://localhost:3000/todos')
 	   .toPromise()
 	   .then(response => {return response.json().data})
-	   .catch(this.handleError);
 	}
 
 	getTask(id: number) {
@@ -49,16 +50,6 @@ export class TaskDetailComponent implements OnInit {
 	         .then(tasks => tasks.filter(task => task.id === id)[0]);
 	}
 
-	ngOnInit() {
-    	this.http.get('http://localhost:3000/todos').map((res:Response) => {return res.json();}).subscribe((response) => {
-    		let id = +this.routeParams.get('id');
-			this.task = response.filter(task => task.id === id)[0];
-			return this.task;
-		});
-
-	}
-
-/*	Allows user to navigate backwards one step in the browsers history stack.	*/
 	delete() {
 		var id = this.task.id;
 		this.http.delete('http://localhost:3000/todos/' + encodeURIComponent(id)).map((res:Response) => res).subscribe((response) => {
@@ -66,6 +57,7 @@ export class TaskDetailComponent implements OnInit {
 		this.goBack();
 	}
 
+/*	Allows user to navigate backwards one step in the browsers history stack.	*/
 	goBack() {
   		window.history.back();
 	}
